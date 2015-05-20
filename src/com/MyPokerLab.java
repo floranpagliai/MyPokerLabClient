@@ -1,11 +1,9 @@
-import Controler.HandReader;
+package com;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.StringTokenizer;
+import com.Controler.HandReader;
 
 /**
- * PACKAGE_NAME in MyPokerLab
+ * PACKAGE_NAME in com.MyPokerLab
  * Made by Floran Pagliai <floran.pagliai@gmail.com>
  * Started on 20/05/15 at 00:22
  */

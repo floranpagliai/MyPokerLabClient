@@ -1,4 +1,4 @@
-package Model;
+package com.Model;
 
 public enum eRound {
     antebinds,

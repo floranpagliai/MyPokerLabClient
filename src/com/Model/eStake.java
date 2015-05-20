@@ -1,7 +1,7 @@
-package Model;
+package com.Model;
 
 /**
- * Model in MyPokerLab
+ * com.Model in com.MyPokerLab
  * Made by Floran Pagliai <floran.pagliai@gmail.com>
  * Started on 15/05/15 at 04:30
  */

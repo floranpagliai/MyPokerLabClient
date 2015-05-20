@@ -1,7 +1,11 @@
-package Model;
+package com.Model;
 
+import javax.xml.bind.annotation.*;
 import java.util.*;
 
+@XmlRootElement(name = "hand")
+@XmlSeeAlso({Player.class})
+@XmlType(propOrder = {"roomName", "roomHandId", "timestamp", "tableName", "stake", "buttonSeatPos", "players", "actions", "board"})
 public class Hand {
     private eRoom roomName;
     private String roomHandId;
@@ -53,6 +57,7 @@ public class Hand {
         this.stake = stake;
     }
 
+    @XmlElementWrapper(name="seats")
     public Map<Integer, Player> getPlayers() {
         return players;
     }
@@ -81,6 +86,8 @@ public class Hand {
         this.buttonSeatPos = buttonSeatPos;
     }
 
+    @XmlElementWrapper(name="actions")
+    @XmlElements({@XmlElement(name="action", type=Action.class)})
     public ArrayList<Action> getActions() {
         return actions;
     }
@@ -93,6 +100,8 @@ public class Hand {
         this.actions.add(action);
     }
 
+    @XmlElementWrapper(name="board")
+    @XmlElement(name="card")
     public String[] getBoard() {
         return board;
     }
