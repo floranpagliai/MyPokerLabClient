@@ -1,7 +1,9 @@
-package Model;
+package com.Model;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 
+@XmlType(propOrder = {"round", "player", "action", "amount", "cards"})
 public class Action {
     private Player player;
     private eAction action;
@@ -19,6 +21,7 @@ public class Action {
         this.player = player;
     }
 
+    @XmlAttribute
     public eAction getAction() {
         return action;
     }
@@ -27,6 +30,7 @@ public class Action {
         this.action = action;
     }
 
+    @XmlAttribute
     public eRound getRound() {
         return round;
     }
@@ -35,6 +39,7 @@ public class Action {
         this.round = round;
     }
 
+    @XmlAttribute
     public Double getAmount() {
         return amount;
     }
@@ -43,6 +48,8 @@ public class Action {
         this.amount = amount;
     }
 
+    @XmlElementWrapper(name="cards")
+    @XmlElement(name="card")
     public String[] getCards() {
         return cards;
     }

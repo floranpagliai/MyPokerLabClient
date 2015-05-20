@@ -1,11 +1,14 @@
-package Model;
+package com.Model;
+
+import javax.xml.bind.annotation.*;
 
 /**
- * Model in MyPokerLab
+ * com.Model in com.MyPokerLab
  * Made by Floran Pagliai <floran.pagliai@gmail.com>
  * Started on 15/05/15 at 22:41
  */
 
+@XmlType(propOrder = {"name", "stack"})
 public class Player {
     private String name;
     private double stack;
@@ -17,6 +20,7 @@ public class Player {
         this.name = name;
     }
 
+    @XmlAttribute
     public String getName() {
         return name;
     }
@@ -25,6 +29,7 @@ public class Player {
         this.name = name;
     }
 
+    @XmlAttribute
     public double getStack() {
         return stack;
     }

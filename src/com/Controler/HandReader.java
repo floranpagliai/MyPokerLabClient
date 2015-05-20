@@ -1,18 +1,21 @@
-package Controler;
+package com.Controler;
 
 
-import Model.*;
+import com.Model.*;
+import com.Utils.XMLConverter;
 
+import javax.xml.bind.JAXBException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Controler in MyPokerLab
+ * com.Controler in com.MyPokerLab
  * Made by Floran Pagliai <floran.pagliai@gmail.com>
  * Started on 15/05/15 at 23:08
  */
@@ -40,7 +43,18 @@ public class HandReader implements Runnable {
                 reader.close();
             }
         } catch (Exception e) {
-            System.err.format("Exception occurred trying to read '%s'.", "test");
+            e.printStackTrace();
+        }
+
+        try {
+            XMLConverter converter = new XMLConverter();
+//            for (int i = 1 ; hands.get(i) != null ; i++)
+                converter.convertFromObjectToXML(hands.get(3), "/Users/floran/Documents/test.xml");
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JAXBException e) {
             e.printStackTrace();
         }
     }
@@ -149,7 +163,7 @@ public class HandReader implements Runnable {
         action.setRound(round);
         if (str.contains("posts")) {
             action.setAction(eAction.posts);
-            action.setPlayer(new Player(str.substring(0, str.indexOf("posts")-1)));
+            action.setPlayer(hand.findPlayer(str.substring(0, str.indexOf("posts")-1)));
             action.setAmount(this.getAmount(str, "blind"));
         } else if (str.contains("Dealt")) {
             action.setAction(eAction.dealt);
@@ -181,7 +195,7 @@ public class HandReader implements Runnable {
         } else {
             return null;
         }
-        action.update();
+//        action.update();
         return action;
     }
 
