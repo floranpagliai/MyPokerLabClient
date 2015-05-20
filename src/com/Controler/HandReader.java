@@ -50,8 +50,6 @@ public class HandReader implements Runnable {
             XMLConverter converter = new XMLConverter();
 //            for (int i = 1 ; hands.get(i) != null ; i++)
                 converter.convertFromObjectToXML(hands.get(3), "/Users/floran/Documents/test.xml");
-
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JAXBException e) {
